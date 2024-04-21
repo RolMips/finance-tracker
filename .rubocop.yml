@@ -1,0 +1,30 @@
+require: rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - Gemfile
+    - config/environment.rb
+    - db/schema.rb
+    - bin/*
+    - tmp/**/*
+    - vendor/bundle/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - bin/*
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/ThreeStateBooleanColumn:
+  Enabled: false
+

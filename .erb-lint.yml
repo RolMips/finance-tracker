@@ -1,0 +1,14 @@
+---
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+linters:
+  AllowedScriptType:
+    allowed_types:
+      - 'text/javascript'
+      - 'module'
+  ErbSafety:
+    enabled: true
+    exclude:
+  RequireInputAutocomplete:
+    enabled: false
