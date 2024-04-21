@@ -1,2 +1,4 @@
-<h1>Welcome#home</h1>
-<p>Find me in app/views/welcome/home.html.erb</p>
+<h1>Welcome to Finance Tracker application</h1>
+<%= form_tag(destroy_user_session_path, method: :delete) do %>
+  <%= submit_tag "Sign out" %>
+<% end %>
