@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" data-turbo-cache="false">
+    <h2><%= I18n.t("errors.messages.not_saved",  count: resource.errors.count) %></h2>
+      <% resource.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= msg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

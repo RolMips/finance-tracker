@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="card mt-3 p-3">
+      <h2 class="text-center text-dark m-3">Sign up</h2>
+      <div class="text-center">
+        <%= image_tag("logo.jpg", width: "100px", :alt => "finance tracker logo") %>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages" %>
+        <div class="form-group mb-3">
+          <%= f.label :email, class: "form-label mb-2" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :password, class: "form-label mb-2" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :password_confirmation, class: "form-label mb-2 %" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+        <div class="form-group text-center m-2">
+          <%= f.submit  "Sign up", class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+  <%= render 'devise/shared/links' %>
+</div>
