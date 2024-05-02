@@ -11,9 +11,9 @@
       </div>
     <% end %>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-6">
     <% if @company_data && @quote_data %>
-      <div class="card">
+      <div class="card m-2">
         <div class="card-header">
           <h3><%= params[:stock] %> information</h3>
         </div>
@@ -24,8 +24,8 @@
         </ul>
       </div>
     <% elsif @error_message %>
-      <div class="card card-header">
-        <span class='text-danger'><%= @error_message %></p>
+      <div class="card card-header m-2">
+        <span class='text-danger'><%= @error_message %></span>
       </div>
     <% end %>
   </div>

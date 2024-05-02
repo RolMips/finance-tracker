@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'httparty'
 class AlphaVantageService
   include HTTParty
   base_uri 'https://www.alphavantage.co'
@@ -38,6 +39,7 @@ class AlphaVantageService
       error_message = "Error: #{response.code} - #{response.message}"
       raise AlphaVantageError, error_message
     end
+    raise AlphaVantageError, 'Stock ticker symbol not found !' if response.blank?
 
     data = response.parsed_response
     raise AlphaVantageError, data['Information'] if data['Information']
