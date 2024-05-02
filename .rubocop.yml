@@ -30,3 +30,8 @@ Rails/UniqueValidationWithoutIndex:
 Rails/ThreeStateBooleanColumn:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+  
+Metrics/MethodLength:
+  Enabled: false
