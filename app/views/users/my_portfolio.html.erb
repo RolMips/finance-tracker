@@ -2,7 +2,7 @@
 <h3 class="p-2">Search stock</h3>
 <div class="row">
   <div class="col-sm-2">
-    <%= form_tag search_stock_path, method: :get do %>
+    <%= form_tag search_stock_path, data: {turbo_stream: true}, remote: true, method: :get do %>
       <div class="input-group m-2">
         <%= text_field_tag :stock, params[:stock], placeholder: 'Stock ticker symbol', class: "form-control" %>
         <%= button_tag type: :submit, class: "btn btn-primary" do %>
@@ -11,22 +11,6 @@
       </div>
     <% end %>
   </div>
-  <div class="col-sm-6">
-    <% if @company_data && @quote_data %>
-      <div class="card m-2">
-        <div class="card-header">
-          <h3><%= params[:stock] %> information</h3>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><h6>Company Name: <span class="badge text-bg-primary"><%= @company_data[:name] %> (<%= @company_data[:country] %>)</span></h6></li>
-          <li class="list-group-item"><h6>Last price: <span class='badge text-bg-primary'><%= @quote_data[:price] %> <%= @company_data[:currency] %></span></h6></li>
-          <li class="list-group-item"><h6>Exchange: <span class='badge text-bg-primary'><%= @company_data[:exchange] %></span></h6></li>
-        </ul>
-      </div>
-    <% elsif @error_message %>
-      <div class="card card-header m-2">
-        <span class='text-danger'><%= @error_message %></span>
-      </div>
-    <% end %>
+  <div class="col-sm-4" id="api_result">
   </div>
 </div>

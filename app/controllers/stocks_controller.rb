@@ -10,10 +10,16 @@ class StocksController < ApplicationController
       rescue AlphaVantageService::AlphaVantageError || AlphaVantageService::StandardError => e
         @error_message = "Error: #{e.message}"
       end
-      render 'users/my_portfolio'
     else
-      flash[:danger] = 'Please enter a stock ticker symbol !'
-      redirect_to my_portfolio_path
+      @error_message = 'Error: Please enter a stock ticker symbol !'
+    end
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update(
+          'api_result',
+          partial: 'users/api_result'
+        )
+      end
     end
   end
 
