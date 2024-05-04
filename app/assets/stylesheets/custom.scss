@@ -7,3 +7,7 @@
     padding-right: 25px;
     padding-left: 25px;
 }
+
+.table-hover tbody tr:hover td {
+    background-color: #d9e7fd;
+}

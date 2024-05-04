@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get 'my_portfolio', to: 'users#my_portfolio'
   get 'search_stock', to: 'stocks#search'
+  resources :user_stocks
 end
