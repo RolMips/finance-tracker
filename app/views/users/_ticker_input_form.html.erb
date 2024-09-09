@@ -1,0 +1,8 @@
+<%= form_tag search_stock_path, data: {turbo_stream: true}, remote: true, method: :get do %>
+    <div class="input-group m-2">
+    <%= text_field_tag :stock, nil, placeholder: 'Stock ticker symbol', id: 'ticker_input', class: "form-control" %>
+    <%= button_tag type: :submit, class: "btn btn-primary" do %>
+        <i class="fa fa-search"></i>
+    <% end %>
+    </div>
+<% end %>

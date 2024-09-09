@@ -1,16 +1,25 @@
-<% if @company_data && @quote_data %>
-    <div class="card m-2">
+<% if @stock && !@error_message %>
+  <div class="card m-2">
     <div class="card-header">
-        <h3><%= params[:stock] %> information</h3>
+      <h3><%= "#{params[:stock]} information" %></h3>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item"><h6>Company Name: <span class="badge text-bg-secondary"><%= @company_data[:name] %> (<%= @company_data[:country] %>)</span></h6></li>
-        <li class="list-group-item"><h6>Last price: <span class='badge text-bg-secondary'><%= @quote_data[:price] %> <%= @company_data[:currency] %></span></h6></li>
-        <li class="list-group-item"><h6>Exchange: <span class='badge text-bg-secondary'><%= @company_data[:exchange] %></span></h6></li>
+      <li class="list-group-item"><h6>Company Name: <span class="badge text-bg-secondary"><%= @stock.name %> (<%= @stock.company_country %>)</span></h6></li>
+      <li class="list-group-item"><h6>Last price: <span class='badge text-bg-secondary'><%= @stock.last_price %> <%= @stock.last_price_currency %></span></h6></li>
+      <li class="list-group-item"><h6>Exchange: <span class='badge text-bg-secondary'><%= @stock.exchange_place %></span></h6></li>
     </ul>
+    <div class="card-footer text-muted">
+      <small>Created <%= time_ago_in_words(@stock.created_at) %> ago - Updated <%= time_ago_in_words(@stock.updated_at) %> ago</small>
     </div>
+  </div>
+  <% if !stock_already_tracked?(params[:stock]) && portfolio_count? < 10 %>
+      <%= link_to("Add to portfolio", user_stocks_path(user_id: current_user.id, ticker: @stock.ticker),
+                data: { turbo_method: :post },
+                class: 'btn btn-primary m-2') %>        
+  <% end %>
+  <h2 class="badge lg text-bg-danger m-2"><%= "Your portfolio is full" if !stock_already_tracked?(params[:stock]) && portfolio_count?>=10 %></h2>
 <% elsif @error_message %>
-    <div class="card card-header m-2">
+  <div class="card card-header m-2">
     <span class='text-danger'><%= @error_message %></span>
-    </div>
+  </div>
 <% end %>

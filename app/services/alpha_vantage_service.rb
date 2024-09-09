@@ -35,10 +35,7 @@ class AlphaVantageService
   private
 
   def handle_response(response)
-    unless response.success?
-      error_message = "Error: #{response.code} - #{response.message}"
-      raise AlphaVantageError, error_message
-    end
+    raise AlphaVantageError, "#{response.code} - #{response.message}" unless response.success?
     raise AlphaVantageError, 'Stock ticker symbol not found !' if response.blank?
 
     data = response.parsed_response
