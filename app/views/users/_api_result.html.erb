@@ -15,7 +15,7 @@
   <% if !stock_already_tracked?(params[:stock]) && portfolio_count? < 10 %>
       <%= link_to("Add to portfolio", user_stocks_path(user_id: current_user.id, ticker: @stock.ticker),
                 data: { turbo_method: :post },
-                class: 'btn btn-primary m-2') %>        
+                class: 'btn btn-primary m-2') %>
   <% end %>
   <h2 class="badge lg text-bg-danger m-2"><%= "Your portfolio is full" if !stock_already_tracked?(params[:stock]) && portfolio_count?>=10 %></h2>
 <% elsif @error_message %>

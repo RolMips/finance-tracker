@@ -21,12 +21,12 @@
           <td><%= time_ago_in_words(stock.updated_at) %></td>
           <td><%= stock.exchange_place %></td>
           <td>
-            <%= link_to( "<i class='fa fa-refresh'></i>".html_safe, user_stock_path(stock),
-                        data: {  turbo_method: :patch },
-                        class: 'btn btn-primary btn-sm') %>
-            <%= link_to( "<i class='fa fa-trash'></i>".html_safe, user_stock_path(stock),
-                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-                        class: 'btn btn-danger btn-sm') %>
+            <%= link_to(user_stock_path(stock), data: { turbo_method: :patch }, class: 'btn btn-primary btn-sm') do %>
+              <i class='fa fa-refresh'></i>
+            <% end %>
+            <%= link_to(user_stock_path(stock), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm') do %>
+              <i class='fa fa-trash'></i>
+            <% end %>
           </td>
         </id=>
       <% end %>

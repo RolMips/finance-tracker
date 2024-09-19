@@ -3,6 +3,7 @@
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
+        <%= current_user.email %>
       </button>
       <%= link_to(root_path, class: 'navbar-brand') do %>
         <%= image_tag("logo.png", width: "48px", alt: "finance tracker logo") %>
@@ -12,11 +13,11 @@
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><%= image_tag("logo.png", width: "48px", :alt => "finance tracker logo") %> Finance Tracker application</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>        
+        </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <%= link_to('My Portfolio', my_portfolio_path, class: 'nav-link' + (' active' if request.path == my_portfolio_path).to_s) %>
+              <%= link_to("My Portfolio", my_portfolio_path, class: 'nav-link' + (' active' if request.path == my_portfolio_path).to_s) %>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -41,7 +42,7 @@
               </form>
             </li>
             <li class="nav-item mt-3">
-              <%= link_to("Sign out", destroy_user_session_path, 
+              <%= link_to("Sign out", destroy_user_session_path,
                           data: { turbo_method: :delete },
                           class: 'btn btn-danger') %>
             </li>
